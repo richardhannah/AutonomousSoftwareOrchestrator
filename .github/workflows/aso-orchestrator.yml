@@ -14,6 +14,7 @@ jobs:
       ADO_ORG: richardhannah
       ADO_PROJECT: CoreSupport
       ADO_REPO: CoreSupport-Manifest
+      GITHUB_ORG: richardhannah
     steps:
       - name: Checkout orchestrator repo
         uses: actions/checkout@v4
