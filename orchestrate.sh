@@ -57,15 +57,16 @@ for row in $(echo "$MANIFEST" | jq -r '.repos[] | @base64'); do
     repo=$(cut -d/ -f2 <<< "$github_path")
     # org=$(cut -d/ -f1 <<< "$github_path")
 
+json_payload=$(jq -n \
+  --arg name "$repo" \
+  --arg description "Created by Autonomous Software Orchestrator" \
+  '{name: $name, private: true, description: $description}')
 
-create_response=$(curl -sS -X POST -H "Authorization: Bearer $ASO_PAT" -H "Accept: application/vnd.github+json" https://api.github.com/user/repos -d @- <<'EOF'
-{
-  "name": "'"$repo"'",
-  "private": true,
-  "description": "Created by Autonomous Software Orchestrator"
-}
-EOF
-)
+
+create_response=$(curl -sS -X POST -H "Authorization: Bearer $ASO_PAT" \
+-H "Accept: application/vnd.github+json" https://api.github.com/user/repos \
+-d -d "$json_payload")
+
 
     echo "🔬 Raw response from GitHub:"
     echo "$create_response"
