@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ADO_PAT: ${{ secrets.ADO_PAT }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ASO_PAT: ${{ secrets.ASO_PAT }}
       ADO_ORG: richardhannah
       ADO_PROJECT: CoreSupport
       ADO_REPO: CoreSupport-Manifest
