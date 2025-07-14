@@ -57,11 +57,7 @@ for row in $(echo "$MANIFEST" | jq -r '.repos[] | @base64'); do
     org=$(cut -d/ -f1 <<< "$github_path")
     repo=$(cut -d/ -f2 <<< "$github_path")
 
-create_response=$(curl -sS -X POST \
--H "Authorization: Bearer $ASO_PAT" \
--H "Accept: application/vnd.github+json" \
-https://api.github.com/orgs/$org/repos \
--d @- <<'EOF'
+create_response=$(curl -sS -X POST -H "Authorization: Bearer $ASO_PAT" -H "Accept: application/vnd.github+json" https://api.github.com/orgs/$org/repos -d @- <<'EOF'
 {
   "name": "'"$repo"'",
   "private": true,
