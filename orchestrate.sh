@@ -66,7 +66,7 @@ create_response=$(curl -sS -X POST -H "Authorization: Bearer $ASO_PAT" -H "Accep
 EOF
 )
 
-    echo "📦 Created: $(echo "$create_response" | jq -r '.full_name // "unknown")"
+    echo "📦 Created: $(echo \"$create_response\" | jq -r '.full_name // \"unknown\"')"
   fi
 done
 
