@@ -11,6 +11,9 @@ jobs:
     env:
       ADO_PAT: ${{ secrets.ADO_PAT }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ADO_ORG: richardhannah
+      ADO_PROJECT: CoreSupport
+      ADO_REPO: CoreSupport-Manifest
     steps:
       - name: Checkout orchestrator repo
         uses: actions/checkout@v4
