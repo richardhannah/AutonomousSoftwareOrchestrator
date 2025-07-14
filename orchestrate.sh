@@ -65,7 +65,7 @@ json_payload=$(jq -n \
 
 create_response=$(curl -sS -X POST -H "Authorization: Bearer $ASO_PAT" \
 -H "Accept: application/vnd.github+json" https://api.github.com/user/repos \
--d -d "$json_payload")
+-d "$json_payload")
 
 
     echo "🔬 Raw response from GitHub:"
