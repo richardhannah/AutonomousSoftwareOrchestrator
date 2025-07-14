@@ -1,0 +1,19 @@
+name: Autonomous Software Orchestrator
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Every 5 minutes
+  workflow_dispatch:
+
+jobs:
+  orchestrate:
+    runs-on: ubuntu-latest
+    env:
+      ADO_PAT: ${{ secrets.ADO_PAT }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout orchestrator repo
+        uses: actions/checkout@v4
+
+      - name: Run orchestrator script
+        run: bash orchestrate.sh
